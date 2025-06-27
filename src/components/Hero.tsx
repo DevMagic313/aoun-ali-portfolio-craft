@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 pt-20 sm:pt-24 md:pt-16 lg:pt-0"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -71,7 +71,7 @@ const Hero = () => {
             <motion.img
               src="/lovable-uploads/c927644b-067a-48c4-88fe-8d01573900bc.png"
               alt="Aoun Ali"
-              className="w-32 h-32 sm:w-48 sm:h-48 lg:w-56 lg:h-56 rounded-full mx-auto mb-6 sm:mb-8 object-cover border-4 sm:border-8 border-white dark:border-gray-800 shadow-2xl"
+              className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-56 lg:h-56 rounded-full mx-auto mb-6 sm:mb-8 object-cover border-4 sm:border-6 lg:border-8 border-white dark:border-gray-800 shadow-2xl"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
               loading="eager"
@@ -90,14 +90,14 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-4 sm:mb-6"
         >
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-4 leading-tight">
             Hi, I'm{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Aoun Ali
             </span>
           </h1>
           <motion.p 
-            className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 sm:mb-6"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-4 sm:mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -105,7 +105,7 @@ const Hero = () => {
             Frontend Developer & UI/UX Enthusiast
           </motion.p>
           <motion.p 
-            className="text-sm sm:text-base lg:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-6 sm:mb-8 px-4"
+            className="text-sm sm:text-base lg:text-lg text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mb-6 sm:mb-8 px-4 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -167,7 +167,7 @@ const Hero = () => {
               whileTap={{ scale: 0.9 }}
               title={item.label}
             >
-              <item.icon size={20} className="sm:w-6 sm:h-6 group-hover:scale-110 transition-transform" />
+              <item.icon size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:scale-110 transition-transform" />
             </motion.button>
           ))}
         </motion.div>
