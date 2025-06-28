@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 pt-20 sm:pt-24 md:pt-16 lg:pt-0"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 pt-24 sm:pt-28 md:pt-32 lg:pt-20"
     >
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
@@ -71,10 +71,14 @@ const Hero = () => {
             <motion.img
               src="/lovable-uploads/c927644b-067a-48c4-88fe-8d01573900bc.png"
               alt="Aoun Ali"
-              className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-56 lg:h-56 rounded-full mx-auto mb-6 sm:mb-8 object-cover border-4 sm:border-6 lg:border-8 border-white dark:border-gray-800 shadow-2xl"
+              className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-56 xl:h-56 rounded-full mx-auto mb-6 sm:mb-8 object-cover border-4 sm:border-6 lg:border-8 border-white dark:border-gray-800 shadow-2xl"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
               loading="eager"
+              onError={(e) => {
+                console.log('Image failed to load:', e);
+                e.currentTarget.style.display = 'none';
+              }}
             />
             <motion.div
               className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-30"
