@@ -19,18 +19,28 @@ const Navbar = () => {
 
   const scrollToSection = (sectionId: string) => {
     console.log('Scrolling to section:', sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offsetTop = element.offsetTop;
-      const navbarHeight = 80; // Account for navbar height
-      window.scrollTo({
-        top: offsetTop - navbarHeight,
-        behavior: 'smooth'
-      });
-      setIsOpen(false); // Close mobile menu after navigation
-    } else {
-      console.warn('Element not found:', sectionId);
-    }
+    
+    // First close the mobile menu
+    setIsOpen(false);
+    
+    // Add a small delay to ensure menu is closed before scrolling
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        console.log('Scrolled to:', sectionId);
+      } else {
+        console.warn('Element not found:', sectionId);
+      }
+    }, 100);
   };
 
   const navItems = [
@@ -154,7 +164,9 @@ const Navbar = () => {
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
                       console.log('Mobile menu item clicked:', item.id);
                       scrollToSection(item.id);
                     }}
