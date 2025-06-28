@@ -18,10 +18,18 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    console.log('Scrolling to section:', sectionId);
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      const offsetTop = element.offsetTop;
+      const navbarHeight = 80; // Account for navbar height
+      window.scrollTo({
+        top: offsetTop - navbarHeight,
+        behavior: 'smooth'
+      });
+      setIsOpen(false); // Close mobile menu after navigation
+    } else {
+      console.warn('Element not found:', sectionId);
     }
   };
 
@@ -146,7 +154,10 @@ const Navbar = () => {
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.id}
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => {
+                      console.log('Mobile menu item clicked:', item.id);
+                      scrollToSection(item.id);
+                    }}
                     className="w-full flex items-center space-x-3 px-4 sm:px-6 py-2 sm:py-3 text-gray-700 dark:text-gray-300 
                                hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 
                                transition-colors duration-200 text-left text-sm sm:text-base"
@@ -154,6 +165,7 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     whileHover={{ x: 10 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <item.icon size={18} className="sm:w-5 sm:h-5" />
                     <span className="font-medium">{item.label}</span>
